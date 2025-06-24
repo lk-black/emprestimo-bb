@@ -183,8 +183,7 @@
         sessionStorage.setItem('dataNascimento', nascimento);
 
         const urlParams = new URLSearchParams(window.location.search);
-        const redirectUrl = '/01' + (urlParams.toString() ? '?' + urlParams.toString() : '');
-        window.location.href = redirectUrl;
+        utmUtils.redirectWithUTMs('/01/index.html');
       });
 
       // Inicia botão desativado
@@ -361,6 +360,13 @@
         fbq('track', 'Lead');
       }
     });
+  </script>
+  <script src="../utm-utils.js"></script>
+  <script>
+      // Inicializar UTMs quando a página carregar
+      window.addEventListener('load', function() {
+          utmUtils.init();
+      });
   </script>
 
 

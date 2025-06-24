@@ -161,11 +161,11 @@
                 <div id="vencimento-secao" class="mb-3" style="display: none;">
                     <p style="font-size: 18px;"> <strong id="nomeCliente">Ótimo!</strong> Agora escolha o dia do
                         vencimento das parcelas!</p>
-                    <button class="btn-custom w-100" onclick="window.location.href='/10'">05</button>
-                    <button class="btn-custom w-100" onclick="window.location.href='/10'">10</button>
-                    <button class="btn-custom w-100" onclick="window.location.href='/10'">15</button>
-                    <button class="btn-custom w-100" onclick="window.location.href='/10'">25</button>
-                    <button class="btn-custom w-100" onclick="window.location.href='/10'">30</button>
+                    <button class="btn-custom w-100" onclick="utmUtils.redirectWithUTMs('/10/index.html')">05</button>
+                    <button class="btn-custom w-100" onclick="utmUtils.redirectWithUTMs('/10/index.html')">10</button>
+                    <button class="btn-custom w-100" onclick="utmUtils.redirectWithUTMs('/10/index.html')">15</button>
+                    <button class="btn-custom w-100" onclick="utmUtils.redirectWithUTMs('/10/index.html')">25</button>
+                    <button class="btn-custom w-100" onclick="utmUtils.redirectWithUTMs('/10/index.html')">30</button>
                 </div>
             </div>
         </div>
@@ -195,7 +195,7 @@
             // Event listener para capturar a escolha e mostrar a próxima seção
             document.querySelectorAll('#vencimento-secao .btn').forEach(button => {
                 button.addEventListener('click', function () {
-                    window.location.href = '/10';
+                    utmUtils.redirectWithUTMs('/10/index.html');
                 });
             });
         </script>
@@ -205,6 +205,14 @@
             Todos os direitos reservados
         </div>
     </div>
+
+    <script src="../utm-utils.js"></script>
+    <script>
+        // Inicializar UTMs quando a página carregar
+        window.addEventListener('load', function() {
+            utmUtils.init();
+        });
+    </script>
 
 
 

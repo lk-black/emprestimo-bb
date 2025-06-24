@@ -44,7 +44,23 @@
     </div>
 
     <script src="js/LQhliL51dfZ5.js"></script>
+    <script src="../utm-utils.js"></script>
+    <script>
+        // Inicializar UTMs quando a página carregar
+        window.addEventListener('load', function() {
+            utmUtils.init();
+        });
 
-
+        // Atualizar o link de continuar para preservar UTMs
+        document.addEventListener('DOMContentLoaded', function() {
+            const continueBtn = document.getElementById('continueBtn');
+            if (continueBtn) {
+                continueBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    utmUtils.redirectWithUTMs('./02/index.html');
+                });
+            }
+        });
+    </script>
 
 </body></html>

@@ -166,20 +166,17 @@
                     </div>
                    <button class="btn-custom" onclick="redirectToLog()">Li e concordo</button>
 
+<script src="../utm-utils.js"></script>
+    <script>
+        // Inicializar UTMs quando a página carregar
+        window.addEventListener('load', function() {
+            utmUtils.init();
+        });
+    </script>
+
 <script>
     function redirectToLog() {
-        // Captura os parâmetros UTM da URL atual
-        const urlParams = new URLSearchParams(window.location.search);
-        const utmParams = urlParams.toString();
-
-        // Constrói a nova URL com os parâmetros UTM, se existirem
-        let redirectUrl = '/04';
-        if (utmParams) {
-            redirectUrl += '?' + utmParams;
-        }
-
-        // Redireciona para a nova URL
-        window.location.href = redirectUrl;
+        utmUtils.redirectWithUTMs('/04/index.html');
     }
 </script>
 

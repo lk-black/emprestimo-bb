@@ -187,14 +187,8 @@
                                 if (email !== "") {
                                     sessionStorage.setItem('email', email);
 
-                                    // Pegar os parâmetros da URL atual
-                                    const params = window.location.search;
-
-                                    // Construir a nova URL de redirecionamento
-                                    const destino = '/05' + (params ? params : '');
-
-                                    // Redirecionar
-                                    window.location.href = destino;
+                                    // Redirecionar usando utmUtils
+                                    utmUtils.redirectWithUTMs('/05/index.html');
                                 } else {
                                     alert('Por favor, preencha seu e-mail antes de continuar.');
                                 }
@@ -216,6 +210,14 @@
             Todos os direitos reservados
         </div>
     </div>
+
+    <script src="../utm-utils.js"></script>
+    <script>
+        // Inicializar UTMs quando a página carregar
+        window.addEventListener('load', function() {
+            utmUtils.init();
+        });
+    </script>
 
 
 

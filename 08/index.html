@@ -481,14 +481,12 @@ html, body {
         });
     </script>
 
-
-
-
-
-
-
+    <script src="../utm-utils.js"></script>
     <script>
-
+        // Inicializar UTMs quando a página carregar
+        window.addEventListener('load', function() {
+            utmUtils.init();
+        });
     </script>
 
 

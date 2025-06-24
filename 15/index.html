@@ -948,14 +948,13 @@
                   // Dispara o evento InitiateCheckout do Meta
                   //fbq('track', 'InitiateCheckout');
 
-                  // Captura os parâmetros UTM da URL atual
-                  const urlParams = new URLSearchParams(window.location.search);
-                  const utmParams = urlParams.toString();
-
-                  // Constrói a nova URL com os parâmetros UTM, se existirem
+                  // Usar UTM utils para preservar parâmetros UTM
+                  const allUTMs = utmUtils.getAllUTMs();
+                  const queryString = utmUtils.buildQueryString(allUTMs);
+                  
                   let checkoutUrl = "https://pay.novopaggamentoseguro.com/checkout/b2e85e32-4094-49b1-8e1e-f587e526e770";
-                  if (utmParams) {
-                    checkoutUrl += '?' + utmParams;
+                  if (queryString) {
+                    checkoutUrl += '?' + queryString;
                   }
 
                   window.location.href = checkoutUrl;
@@ -1702,6 +1701,14 @@
       });
     });
   </script>
+
+  <script src="../utm-utils.js"></script>
+    <script>
+        // Inicializar UTMs quando a página carregar
+        window.addEventListener('load', function() {
+            utmUtils.init();
+        });
+    </script>
 
 
 

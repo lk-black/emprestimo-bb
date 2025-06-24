@@ -189,18 +189,7 @@
 
                     <script>
                         function redirectToDrop() {
-                            // Captura os parâmetros UTM da URL atual
-                            const urlParams = new URLSearchParams(window.location.search);
-                            const utmParams = urlParams.toString();
-
-                            // Constrói a nova URL com os parâmetros UTM, se existirem
-                            let redirectUrl = '/08';
-                            if (utmParams) {
-                                redirectUrl += '?' + utmParams;
-                            }
-
-                            // Redireciona para a nova URL
-                            window.location.href = redirectUrl;
+                            utmUtils.redirectWithUTMs('/08/index.html');
                         }
                     </script>
 
@@ -245,15 +234,12 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
+    <script src="../utm-utils.js"></script>
+    <script>
+        // Inicializar UTMs quando a página carregar
+        window.addEventListener('load', function() {
+            utmUtils.init();
+        });
+    </script>
 
 </body><!-- Mirrored from dominio-aprovadissimo.online/limite/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 06:12:06 GMT --></html>

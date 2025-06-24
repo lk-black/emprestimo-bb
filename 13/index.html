@@ -598,17 +598,7 @@
     
                             <script>
         document.getElementById('redirectButton').addEventListener('click', function () {
-            // Captura os parâmetros UTM da URL atual
-            const urlParams = new URLSearchParams(window.location.search);
-            const utmParams = urlParams.toString();
-            
-            // Constrói a nova URL com os parâmetros UTM, se existirem
-            let redirectUrl = '/14';
-            if (utmParams) {
-                redirectUrl += '?' + utmParams;
-            }
-    
-            window.location.href = redirectUrl;
+            utmUtils.redirectWithUTMs('/14/index.html');
         });
     </script>
     <!--]--><!--]-->

@@ -177,24 +177,7 @@
 
 <script>
     function redirectToSedex() {
-        // Captura os parâmetros UTM da URL atual
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        if (urlParams.has('cpf')) {
-        // Remove o parâmetro 'cpf'
-        urlParams.delete('cpf');
-        } 
-        
-        const utmParams = urlParams.toString();
-
-        // Constrói a nova URL com os parâmetros UTM, se existirem
-        let redirectUrl = '/03';
-        if (utmParams) {
-            redirectUrl += '?' + utmParams;
-        }
-
-        // Redireciona para a nova URL
-        window.location.href = redirectUrl;
+        utmUtils.redirectWithUTMs('/03/index.html');
     }
 </script>
 
@@ -217,29 +200,12 @@
             }
         </script>
 
+        <script src="../utm-utils.js"></script>
         <script>
-
-            function storeUTMParams() {
-                const params = new URLSearchParams(window.location.search);
-                const utmParams = {};
-
-                // Armazena apenas os parâmetros UTM
-                params.forEach((value, key) => {
-                    if (key.startsWith('utm_')) {
-                        utmParams[key] = value;
-                    }
-                });
-
-                // Salva os parâmetros UTM em uma chave específica no localStorage
-                localStorage.setItem('utmParams', JSON.stringify(utmParams));
-
-                // Exibe no console o que foi armazenado no localStorage
-                console.log('Parâmetros UTM armazenados no localStorage:', utmParams);
-            }
-
-            window.onload = function () {
-                storeUTMParams();
-            };
+            // Inicializar UTMs quando a página carregar
+            window.addEventListener('load', function() {
+                utmUtils.init();
+            });
         </script>
         
         <div class="footer py-4" id="footerChg">
