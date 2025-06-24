@@ -596,9 +596,58 @@
                                 Autorizar
                             </button>
     
+                            <script src="../utm-utils.js"></script>
                             <script>
-        document.getElementById('redirectButton').addEventListener('click', function () {
-            utmUtils.redirectWithUTMs('/14/index.html');
+        console.log('Script UTM carregado, verificando utmUtils:', typeof utmUtils);
+        
+        // Inicializar UTMs quando a página carregar
+        window.addEventListener('load', function() {
+            console.log('Página carregada, utmUtils disponível:', typeof utmUtils !== 'undefined');
+            if (typeof utmUtils !== 'undefined') {
+                utmUtils.init();
+            }
+        });
+
+        // Função de fallback caso utm-utils não esteja disponível
+        function redirectWithUTMsFallback(url) {
+            try {
+                console.log('Tentando redirecionamento para:', url);
+                console.log('utmUtils disponível:', typeof utmUtils !== 'undefined');
+                
+                if (typeof utmUtils !== 'undefined') {
+                    console.log('Usando utmUtils.redirectWithUTMs');
+                    utmUtils.redirectWithUTMs(url);
+                } else {
+                    console.log('Usando fallback manual');
+                    // Fallback: capturar UTMs manualmente
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const utmParams = urlParams.toString();
+                    let redirectUrl = url;
+                    if (utmParams) {
+                        redirectUrl += (url.includes('?') ? '&' : '?') + utmParams;
+                    }
+                    console.log('Redirecionando com fallback para:', redirectUrl);
+                    window.location.href = redirectUrl;
+                }
+            } catch (error) {
+                console.error('Erro no redirecionamento:', error);
+                // Último recurso: redirecionamento simples
+                console.log('Usando redirecionamento simples de emergência');
+                window.location.href = url;
+            }
+        }
+
+        // Event listener único para o botão
+        document.addEventListener('DOMContentLoaded', function() {
+            const redirectButton = document.getElementById('redirectButton');
+            if (redirectButton) {
+                redirectButton.addEventListener('click', function () {
+                    console.log('Botão clicado - iniciando redirecionamento');
+                    redirectWithUTMsFallback('/14/index.html');
+                });
+            } else {
+                console.error('Botão redirectButton não encontrado');
+            }
         });
     </script>
     <!--]--><!--]-->
